@@ -1,26 +1,20 @@
 import React from 'react';
-import {AppLayout, DrawerToggle} from 'react-vaadin-components';
-import {NavLink, Outlet} from "react-router-dom";
+import { AppLayout, DrawerToggle } from 'react-vaadin-components';
+import { NavLink, Outlet } from 'react-router-dom';
 
 function App() {
-
   return (
     <AppLayout>
-
       <header slot="navbar" className="flex gap-m items-center">
         <DrawerToggle />
-        <h1 className="m-0 text-l">Hilla + React CRM</h1>
+        <h1 className="m-0 text-l">Hilla Cool Webshop</h1>
       </header>
 
       <nav slot="drawer">
-        <ul className="list-none">
-          <li><NavLink to="/">Contacts</NavLink></li>
-          <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-        </ul>
+        <ul className="list-none"></ul>
       </nav>
 
-      <Outlet/>
-      
+      <Outlet />
     </AppLayout>
   );
 }
