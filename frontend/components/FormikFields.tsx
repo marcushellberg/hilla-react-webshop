@@ -1,9 +1,11 @@
 import React from 'react';
 import { Field, FieldProps } from 'formik';
-import { TextArea } from 'react-vaadin-components';
+import { TextArea, TextField } from 'react-vaadin-components';
+// TODO: Why export from rvc doesn't do it?
+import type { TextArea as TextAreaElement } from '@vaadin/text-area';
 
 export const FormikTextArea = ({ name, onChange, onValueChanged, ...rest }: React.ComponentProps<typeof TextArea>) => {
-  const ref = React.useRef<typeof TextArea.TextAreaElement>(null);
+  const ref = React.useRef<TextAreaElement>(null);
 
   const validate = () => ref.current?.validate() ? '' : 'Invalid';
 
