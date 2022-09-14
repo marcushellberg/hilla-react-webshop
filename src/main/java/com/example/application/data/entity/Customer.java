@@ -2,7 +2,6 @@ package com.example.application.data.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,7 +14,7 @@ public class Customer extends AbstractEntity {
 
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     private List<Order> orders;
 
     @Override

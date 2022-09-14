@@ -1,7 +1,6 @@
 package com.example.application.data.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
@@ -15,7 +14,6 @@ public class Order extends AbstractEntity {
     private LocalDateTime added;
 
     @ManyToOne
-    @JoinColumn(name = "CUST_ID")
     private Customer customer;
 
     private String fulfillment;
