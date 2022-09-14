@@ -1,6 +1,5 @@
 package com.example.application.data.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.GeneratedValue;
@@ -14,7 +13,6 @@ public abstract class AbstractEntity {
     @Id
     @GeneratedValue
     @Type(type = "uuid-char")
-    @JsonIgnore
     private UUID id;
 
     public UUID getId() {
