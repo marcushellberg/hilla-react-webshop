@@ -1,5 +1,5 @@
 import * as React from 'react';
 
-export function Products(): React.ReactElement {
-  return <></>;
+export function Products({ children }: React.PropsWithChildren): React.ReactElement {
+  return <>{children}</>;
 }

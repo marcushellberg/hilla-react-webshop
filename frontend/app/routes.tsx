@@ -1,3 +1,4 @@
+import App from 'Frontend/app/App.js';
 import { CustomersIcon } from 'Frontend/pages/customers/CustomersIcon.js';
 import { Customers } from 'Frontend/pages/customers/index.js';
 import { DiscountsIcon } from 'Frontend/pages/discounts/DiscountsIcon.js';
@@ -13,6 +14,65 @@ import { ProductsIcon } from 'Frontend/pages/products/ProductsIcon.js';
 import { Settings } from 'Frontend/pages/settings/index.js';
 import { SettingsIcon } from 'Frontend/pages/settings/SettingsIcon.js';
 import React from 'react';
+import { RouteObject } from 'react-router-dom';
+
+export type ExtendedRouteObject = Omit<RouteObject, 'children'> & {
+  children: ExtendedRouteObject[];
+  name: string;
+  icon: React.ReactElement;
+  displayInMenu?: boolean
+};
+
+export default [
+  { path: 'orders', name: 'Orders', element: <Orders />, icon: <OrdersIcon /> },
+  {
+    path: 'products',
+    name: 'Products',
+    element: <Products />,
+    icon: <ProductsIcon />,
+    displayInMenu: true,
+  },
+  {
+    path: 'customers',
+    name: 'Customers',
+    element: <Customers />,
+    displayInMenu: true,
+    icon: <CustomersIcon />,
+  },
+  {
+    path: 'discounts',
+    name: 'Discounts',
+    displayInMenu: true,
+    element: <Discounts />,
+    icon: <DiscountsIcon />,
+  },
+  {
+    path: 'gift-cards',
+    name: 'Gift Cards',
+    displayInMenu: true,
+    element: <GiftCards />,
+    icon: <GiftCardsIcon />,
+  },
+  {
+    path: 'pricing',
+    name: 'Pricing',
+    displayInMenu: true,
+    element: <Pricing />,
+    icon: <PricingIcon />,
+  },
+  {
+    path: 'settings',
+    name: 'Settings',
+    displayInMenu: true,
+    element: <Settings />,
+    icon: <SettingsIcon />,
+  },
+  {
+    path: 'products/new',
+    name: 'New Product',
+    element: <NewProduct />,
+  },
+] as ExtendedRouteObject[];
 
 export type RouteDescription = Readonly<{
   children?: Readonly<Record<string, RouteDescription>>;
@@ -21,22 +81,22 @@ export type RouteDescription = Readonly<{
   text: string;
 }>;
 
-export default {
-  orders: { element: <Orders />, icon: <OrdersIcon />, text: 'Orders' },
-  products: {
-    children: {
-      new: {
-        element: <NewProduct />,
-        text: 'New Product',
-      },
-    },
-    element: <Products />,
-    icon: <ProductsIcon />,
-    text: 'Products',
-  },
-  customers: { element: <Customers />, icon: <CustomersIcon />, text: 'Customers' },
-  discounts: { element: <Discounts />, icon: <DiscountsIcon />, text: 'Discounts' },
-  'gift-cards': { element: <GiftCards />, icon: <GiftCardsIcon />, text: 'Gift Cards' },
-  pricing: { element: <Pricing />, icon: <PricingIcon />, text: 'Pricing' },
-  settings: { element: <Settings />, icon: <SettingsIcon />, text: 'Settings' },
-} as Readonly<Record<string, RouteDescription>>;
+// export default {
+//   orders: { element: <Orders />, icon: <OrdersIcon />, text: 'Orders' },
+//   products: {
+//     children: {
+//       new: {
+//         element: <NewProduct />,
+//         text: 'New Product',
+//       },
+//     },
+//     element: <Products />,
+//     icon: <ProductsIcon />,
+//     text: 'Products',
+//   },
+//   customers: { element: <Customers />, icon: <CustomersIcon />, text: 'Customers' },
+//   discounts: { element: <Discounts />, icon: <DiscountsIcon />, text: 'Discounts' },
+//   'gift-cards': { element: <GiftCards />, icon: <GiftCardsIcon />, text: 'Gift Cards' },
+//   pricing: { element: <Pricing />, icon: <PricingIcon />, text: 'Pricing' },
+//   settings: { element: <Settings />, icon: <SettingsIcon />, text: 'Settings' },
+// } as Readonly<Record<string, RouteDescription>>;
