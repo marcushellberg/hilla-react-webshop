@@ -128,6 +128,7 @@
     "@vaadin/vaadin-virtual-list": "23.2.0",
     "@vaadin/vertical-layout": "23.2.0",
     "@vaadin/virtual-list": "23.2.0",
+    "classnames": "^2.3.2",
     "construct-style-sheets-polyfill": "3.1.0",
     "formik": "^2.2.9",
     "line-awesome": "1.3.0",
@@ -136,7 +137,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.4.0",
     "react-vaadin-components": "^1.0.0-alpha.3",
     "recharts": "^2.1.13",
     "yup": "^0.32.11"
@@ -152,6 +153,7 @@
     "async": "3.2.2",
     "glob": "7.2.3",
     "mkdirp": "1.0.4",
+    "prettier": "^2.7.1",
     "rollup-plugin-brotli": "3.1.0",
     "transform-ast": "2.4.4",
     "typescript": "4.7.4",
@@ -298,7 +300,8 @@
     "@reduxjs/toolkit": "$@reduxjs/toolkit",
     "react-redux": "$react-redux",
     "yup": "$yup",
-    "@vaadin/multi-select-combo-box": "$@vaadin/multi-select-combo-box"
+    "@vaadin/multi-select-combo-box": "$@vaadin/multi-select-combo-box",
+    "classnames": "$classnames"
   },
   "vaadin": {
     "dependencies": {
@@ -443,6 +446,6 @@
       "workbox-core": "6.5.0",
       "workbox-precaching": "6.5.0"
     },
-    "hash": "9e8a125f5bc6cbc2cef6d69b27d14fcd28547d4f66bcdd42ded914b515bcd037"
+    "hash": "14bb568f8765e7e639500b443efbd86c9635a68f72ee3ad9a9e4c45fe192be00"
   }
 }
