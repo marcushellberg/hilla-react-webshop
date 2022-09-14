@@ -4,13 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 public class Customer extends AbstractEntity {
     @NotNull
-    private ZonedDateTime added;
+    private LocalDateTime added;
 
     @NotBlank
     private String name;
@@ -26,11 +26,11 @@ public class Customer extends AbstractEntity {
         return name;
     }
 
-    public ZonedDateTime getAdded() {
+    public LocalDateTime getAdded() {
         return added;
     }
 
-    public void setAdded(ZonedDateTime added) {
+    public void setAdded(LocalDateTime added) {
         this.added = added;
     }
 

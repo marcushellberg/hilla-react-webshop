@@ -5,7 +5,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
 @Entity
 public class GiftCard extends AbstractEntity {
@@ -21,7 +21,7 @@ public class GiftCard extends AbstractEntity {
     private BigDecimal balance;
 
     @NotNull
-    private ZonedDateTime created;
+    private LocalDateTime created;
 
     @Override
     public String toString() {
@@ -60,11 +60,11 @@ public class GiftCard extends AbstractEntity {
         this.balance = balance;
     }
 
-    public ZonedDateTime getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(ZonedDateTime created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 }
