@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
@@ -49,8 +50,12 @@ public class DataGenerator {
                     LocalDateTime.now());
             orderGenerator.setData(Order::setAdded, DataType.DATETIME_LAST_30_DAYS);
             List<Order> orders = orderGenerator.create(50, seed).stream().map(order -> {
+                order.setOrderNumber(r.nextInt(10000));
                 order.setCurrency("EUR");
                 order.setCustomer(customers.get(r.nextInt(customers.size())));
+                order.setFulfillment("Fulfilled");
+                order.setPaymentStatus("Paid");
+                order.setTotal(BigDecimal.TEN);
                 return order;
             }).collect(Collectors.toList());
             orderRepository.saveAll(orders);

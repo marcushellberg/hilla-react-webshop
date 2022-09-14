@@ -8,15 +8,18 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Order extends AbstractEntity {
+    @NotNull
+    private int orderNumber;
+
     @NotNull
     private LocalDateTime added;
 
     @ManyToOne
     private Customer customer;
 
-    private String fullfillment;
+    private String fulfillment;
 
     private String paymentStatus;
 
@@ -26,7 +29,15 @@ public class Order extends AbstractEntity {
 
     @Override
     public String toString() {
-        return getId() + " by " + customer;
+        return String.format("#%d by %s", orderNumber, customer);
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
     public LocalDateTime getAdded() {
@@ -45,12 +56,12 @@ public class Order extends AbstractEntity {
         this.customer = customer;
     }
 
-    public String getFullfillment() {
-        return fullfillment;
+    public String getFulfillment() {
+        return fulfillment;
     }
 
-    public void setFullfillment(String fullfillment) {
-        this.fullfillment = fullfillment;
+    public void setFulfillment(String fulfillment) {
+        this.fulfillment = fulfillment;
     }
 
     public String getPaymentStatus() {
