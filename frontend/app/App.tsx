@@ -23,14 +23,12 @@ function App() {
             setSelected(e.detail.value);
           }}
         >
-          {routes
-            .filter((route) => route.displayInMenu)
-            .map(({ path, icon, name }) => (
-              <Tab className="menu-item" key={path}>
-                {icon}
-                {path && <Link to={`/${path}`}>{name}</Link>}
-              </Tab>
-            ))}
+          {routes.map(({ path, icon, name }) => (
+            <Tab className="menu-item" key={path}>
+              {icon}
+              {path && <Link to={`/${path}`}>{name}</Link>}
+            </Tab>
+          ))}
         </Tabs>
       </nav>
 

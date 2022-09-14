@@ -1,4 +1,3 @@
-import App from 'Frontend/app/App.js';
 import { CustomersIcon } from 'Frontend/pages/customers/CustomersIcon.js';
 import { Customers } from 'Frontend/pages/customers/index.js';
 import { DiscountsIcon } from 'Frontend/pages/discounts/DiscountsIcon.js';
@@ -14,13 +13,13 @@ import { ProductsIcon } from 'Frontend/pages/products/ProductsIcon.js';
 import { Settings } from 'Frontend/pages/settings/index.js';
 import { SettingsIcon } from 'Frontend/pages/settings/SettingsIcon.js';
 import React from 'react';
-import { RouteObject } from 'react-router-dom';
+import { Outlet, RouteObject } from 'react-router-dom';
 
 export type ExtendedRouteObject = Omit<RouteObject, 'children'> & {
   children: ExtendedRouteObject[];
   name: string;
   icon: React.ReactElement;
-  displayInMenu?: boolean
+  displayInMenu?: boolean;
 };
 
 export default [
@@ -28,49 +27,49 @@ export default [
   {
     path: 'products',
     name: 'Products',
-    element: <Products />,
     icon: <ProductsIcon />,
-    displayInMenu: true,
+    children: [
+      {
+        path: '',
+        name: 'Products',
+        element: <Products />,
+      },
+      {
+        path: 'new',
+        name: 'New Product',
+        element: <NewProduct />,
+      },
+    ],
   },
   {
     path: 'customers',
     name: 'Customers',
     element: <Customers />,
-    displayInMenu: true,
     icon: <CustomersIcon />,
   },
   {
     path: 'discounts',
     name: 'Discounts',
-    displayInMenu: true,
     element: <Discounts />,
     icon: <DiscountsIcon />,
   },
   {
     path: 'gift-cards',
     name: 'Gift Cards',
-    displayInMenu: true,
     element: <GiftCards />,
     icon: <GiftCardsIcon />,
   },
   {
     path: 'pricing',
     name: 'Pricing',
-    displayInMenu: true,
     element: <Pricing />,
     icon: <PricingIcon />,
   },
   {
     path: 'settings',
     name: 'Settings',
-    displayInMenu: true,
     element: <Settings />,
     icon: <SettingsIcon />,
-  },
-  {
-    path: 'products/new',
-    name: 'New Product',
-    element: <NewProduct />,
   },
 ] as ExtendedRouteObject[];
 
