@@ -39,7 +39,7 @@ public abstract class AbstractEntity {
         AbstractEntity other = (AbstractEntity) obj;
 
         if (id != null) {
-            return id.equals(other.id);
+            return id.equals(other.id) && getClass() == other.getClass();
         }
         return super.equals(other);
     }

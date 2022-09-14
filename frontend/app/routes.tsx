@@ -4,7 +4,7 @@ import { DiscountsIcon } from 'Frontend/pages/discounts/DiscountsIcon.js';
 import { Discounts } from 'Frontend/pages/discounts/index.js';
 import { GiftCardsIcon } from 'Frontend/pages/giftcards/GiftCardsIcon.js';
 import { GiftCards } from 'Frontend/pages/giftcards/index.js';
-import { Orders } from 'Frontend/pages/orders/index.js';
+import {OrderDetails, Orders} from 'Frontend/pages/orders/index.js';
 import { OrdersIcon } from 'Frontend/pages/orders/OrdersIcon.js';
 import { Pricing } from 'Frontend/pages/pricing/index.js';
 import { PricingIcon } from 'Frontend/pages/pricing/PricingIcon.js';
@@ -24,7 +24,19 @@ export type ExtendedRouteObject = Omit<RouteObject, 'children'> & {
 };
 
 export default [
-  { path: 'orders', name: 'Orders', element: <Orders />, icon: <OrdersIcon /> },
+  {
+    path: 'orders',
+    name: 'Orders',
+    element: <Orders />,
+    displayInMenu: true,
+    icon: <OrdersIcon />,
+  },
+  {
+    path: 'orders/:id',
+    name: 'Order Details',
+    element: <OrderDetails/>,
+    icon: <OrdersIcon/>,
+  },
   {
     path: 'products',
     name: 'Products',

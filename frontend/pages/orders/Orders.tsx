@@ -4,8 +4,10 @@ import { Avatar, Grid, GridColumn } from 'react-vaadin-components';
 import { OrdersEndpoint } from 'Frontend/generated/endpoints';
 import Order from 'Frontend/generated/com/example/application/data/entity/Order';
 import "./Order.css";
+import {useNavigate} from "react-router-dom";
 
 export function Orders(): React.ReactElement {
+  const navigate = useNavigate();
   const [orders, setOrders] = useState(Array<Order>());
 
   useEffect(() => {
@@ -20,7 +22,12 @@ export function Orders(): React.ReactElement {
   return (
     <div className="box-border flex flex-col p-m gap-s w-full h-full">
       <div className="content flex gap-m h-full">
-        <Grid className="h-full" items={orders}>
+        <Grid className="h-full" items={orders} onClick={e => {
+          const {item} = e.currentTarget.getEventContext(e.nativeEvent);
+          if (item) {
+            navigate(`/orders/${item.id}`)
+          }
+        }}>
           <GridColumn
             path="orderNumber"
             header="Order"
