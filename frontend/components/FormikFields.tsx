@@ -7,11 +7,7 @@ import type { TextArea as TextAreaElement } from '@vaadin/text-area';
 export const FormikTextArea = ({ name, onChange, onValueChanged, ...rest }: React.ComponentProps<typeof TextArea>) => {
   const ref = React.useRef<TextAreaElement>(null);
 
-  const validate = () => {
-    if (!ref.current?.checkValidity()) {
-      return 'Invalid';
-    }
-  };
+  const validate = () => ref.current?.validate() ? '' : 'Invalid';
 
   return (
     <Field name={name} validate={validate}>
