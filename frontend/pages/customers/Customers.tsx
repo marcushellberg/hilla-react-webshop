@@ -2,11 +2,13 @@ import * as React from 'react';
 import {Avatar, Grid, GridColumn} from "react-vaadin-components";
 import {useEffect, useState} from "react";
 import {CustomersEndpoint} from "Frontend/generated/endpoints";
-import CustomerDTO from "Frontend/generated/com/example/application/data/endpoint/CustomersEndpoint/CustomerDTO";
+import {useNavigate} from "react-router-dom";
+import CustomerDTO from "Frontend/generated/com/example/application/data/endpoint/customers/CustomerDTO";
 
 export function Customers(): React.ReactElement {
 
   const [customers, setCustomers] = useState<CustomerDTO[]>([]);
+  const navigate = useNavigate();
 
   async function fetchCustomers() {
     setCustomers(await CustomersEndpoint.getCustomers());
@@ -20,7 +22,12 @@ export function Customers(): React.ReactElement {
   return (
     <div className="m-xl">
       <h2 className="text-xl my-xl">Customers</h2>
-      <Grid items={customers}>
+      <Grid items={customers} onClick={e => {
+        const {item} = e.currentTarget.getEventContext(e.nativeEvent);
+        if (item) {
+          navigate(`/customers/${item.id}`)
+        }
+      }}>
         <GridColumn path="added"
                     header="Date added"
                     autoWidth

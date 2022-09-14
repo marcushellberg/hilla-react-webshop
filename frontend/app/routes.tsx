@@ -14,6 +14,7 @@ import { Settings } from 'Frontend/pages/settings/index.js';
 import { SettingsIcon } from 'Frontend/pages/settings/SettingsIcon.js';
 import React from 'react';
 import { Outlet, RouteObject } from 'react-router-dom';
+import { CustomerDetails } from 'Frontend/pages/customers/CustomerDetails';
 
 export type ExtendedRouteObject = Omit<RouteObject, 'children'> & {
   children: ExtendedRouteObject[];
@@ -44,8 +45,11 @@ export default [
   {
     path: 'customers',
     name: 'Customers',
-    element: <Customers />,
     icon: <CustomersIcon />,
+    children: [
+      { path: '', name: 'Customer List', element: <Customers /> },
+      { path: ':id', name: 'Customer Details', element: <CustomerDetails /> },
+    ],
   },
   {
     path: 'discounts',
