@@ -76,30 +76,3 @@ export default [
     icon: <SettingsIcon />,
   },
 ] as ExtendedRouteObject[];
-
-export type RouteDescription = Readonly<{
-  children?: Readonly<Record<string, RouteDescription>>;
-  element: React.ReactElement;
-  icon?: React.ReactNode;
-  text: string;
-}>;
-
-// export default {
-//   orders: { element: <Orders />, icon: <OrdersIcon />, text: 'Orders' },
-//   products: {
-//     children: {
-//       new: {
-//         element: <NewProduct />,
-//         text: 'New Product',
-//       },
-//     },
-//     element: <Products />,
-//     icon: <ProductsIcon />,
-//     text: 'Products',
-//   },
-//   customers: { element: <Customers />, icon: <CustomersIcon />, text: 'Customers' },
-//   discounts: { element: <Discounts />, icon: <DiscountsIcon />, text: 'Discounts' },
-//   'gift-cards': { element: <GiftCards />, icon: <GiftCardsIcon />, text: 'Gift Cards' },
-//   pricing: { element: <Pricing />, icon: <PricingIcon />, text: 'Pricing' },
-//   settings: { element: <Settings />, icon: <SettingsIcon />, text: 'Settings' },
-// } as Readonly<Record<string, RouteDescription>>;
