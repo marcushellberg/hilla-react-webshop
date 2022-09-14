@@ -10,7 +10,7 @@ public class Product extends AbstractEntity {
   @Size(min = 1, max = 140)
   private String name;
 
-  private String desctiption;
+  private String description;
 
   @Nonnull
   public String getName() {
@@ -22,10 +22,10 @@ public class Product extends AbstractEntity {
   }
 
   public String getDescription() {
-    return desctiption;
+    return description;
   }
 
   public void setDescription(String description) {
-    this.desctiption = description;
+    this.description = description;
   }
 }
