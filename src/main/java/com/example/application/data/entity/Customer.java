@@ -1,6 +1,8 @@
 package com.example.application.data.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -18,7 +20,7 @@ public class Customer extends AbstractEntity {
     @NotBlank
     private String email;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", fetch = FetchType.EAGER)
     private List<Order> orders;
 
     @Override
