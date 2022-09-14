@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Customer from 'Frontend/generated/com/example/application/data/entity/Customer';
 import { CustomersEndpoint } from 'Frontend/generated/endpoints';
+import CustomerDTO from "Frontend/generated/com/example/application/data/dto/CustomerDTO";
 
 export function CustomerDetails() {
   let { id } = useParams<'id'>();
-  const [customer, setCustomer] = useState<Customer>();
+  const [customer, setCustomer] = useState<CustomerDTO>();
 
   async function fetchCustomer() {
     if (id) {

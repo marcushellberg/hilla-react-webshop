@@ -3,11 +3,11 @@ import {Avatar, Grid, GridColumn} from "react-vaadin-components";
 import {useEffect, useState} from "react";
 import {CustomersEndpoint} from "Frontend/generated/endpoints";
 import {useNavigate} from "react-router-dom";
-import Customer from "Frontend/generated/com/example/application/data/entity/Customer";
+import CustomerDTO from "Frontend/generated/com/example/application/data/dto/CustomerDTO";
 
 export function Customers(): React.ReactElement {
 
-  const [customers, setCustomers] = useState<Customer[]>([]);
+  const [customers, setCustomers] = useState<CustomerDTO[]>([]);
   const navigate = useNavigate();
 
   async function fetchCustomers() {

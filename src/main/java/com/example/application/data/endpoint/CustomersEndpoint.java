@@ -23,6 +23,7 @@ public class CustomersEndpoint {
     @Nonnull
     public List<@Nonnull CustomerDTO> getCustomers() {
         return customerRepository.findAll().stream()
+                // Set deep to false to avoid sending order details
                 .map(customer -> new CustomerDTO(customer, false))
                 .collect(Collectors.toList());
     }

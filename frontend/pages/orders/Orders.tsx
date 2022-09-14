@@ -2,18 +2,17 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Avatar, Grid, GridColumn } from 'react-vaadin-components';
 import { OrdersEndpoint } from 'Frontend/generated/endpoints';
-import Order from 'Frontend/generated/com/example/application/data/entity/Order';
 import "./Order.css";
 import {useNavigate} from "react-router-dom";
+import OrderDTO from "Frontend/generated/com/example/application/data/dto/OrderDTO";
 
 export function Orders(): React.ReactElement {
   const navigate = useNavigate();
-  const [orders, setOrders] = useState(Array<Order>());
+  const [orders, setOrders] = useState(Array<OrderDTO>());
 
   useEffect(() => {
     (async () => {
-      const fetchedOrders = await OrdersEndpoint.getOrders();
-      setOrders(fetchedOrders);
+      setOrders(await OrdersEndpoint.getOrders());
     })();
 
     return () => {};
