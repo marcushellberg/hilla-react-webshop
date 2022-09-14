@@ -1,17 +1,15 @@
 package com.example.application.data.endpoint;
 
-import com.example.application.data.entity.Order;
-import com.example.application.repository.CustomerRepository;
-import com.example.application.repository.DiscountRepository;
-import com.example.application.repository.GiftCardRepository;
+import com.example.application.data.dto.OrderDTO;
 import com.example.application.repository.OrderRepository;
-import com.example.application.repository.PricingRepository;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import dev.hilla.Endpoint;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Endpoint
 @AnonymousAllowed
@@ -23,12 +21,12 @@ public class OrdersEndpoint {
         this.orderRepository = orderRepository;
     }
 
-    public List<Order> getOrders() {
-        return orderRepository.findAll();
+    public List<OrderDTO> getOrders() {
+        return orderRepository.findAll().stream().map(OrderDTO::new).collect(Collectors.toList());
     }
 
     @Nullable
-    public Order getOrderById(UUID id) {
-        return orderRepository.findById(id).orElse(null);
+    public Optional<OrderDTO> getOrderById(UUID id) {
+        return orderRepository.findById(id).map(OrderDTO::new);
     }
 }

@@ -1,22 +1,19 @@
-package com.example.application.data.entity;
+package com.example.application.data.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.example.application.data.entity.Order;
+
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "orders")
-public class Order extends AbstractEntity {
+public class OrderDTO extends AbstractDTO {
+    @NotNull
     private int orderNumber;
 
+    @NotNull
     private LocalDateTime added;
 
-    @ManyToOne
-    @JoinColumn(name = "CUST_ID")
-    private Customer customer;
+    private CustomerDTO customer;
 
     private String fulfillment;
 
@@ -25,6 +22,27 @@ public class Order extends AbstractEntity {
     private BigDecimal total;
 
     private String currency;
+
+    public OrderDTO() {
+    }
+
+    public OrderDTO(Order order) {
+        this(order, true);
+    }
+
+    public OrderDTO(Order order, boolean deep) {
+        this.setId(order.getId());
+        this.added = order.getAdded();
+        this.currency = order.getCurrency();
+        this.orderNumber = order.getOrderNumber();
+        this.total = order.getTotal();
+        this.fulfillment = order.getFulfillment();
+        this.paymentStatus = order.getPaymentStatus();
+
+        if (deep) {
+            this.customer = new CustomerDTO(order.getCustomer(), false);
+        }
+    }
 
     @Override
     public String toString() {
@@ -47,11 +65,11 @@ public class Order extends AbstractEntity {
         this.added = added;
     }
 
-    public Customer getCustomer() {
+    public CustomerDTO getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(CustomerDTO customer) {
         this.customer = customer;
     }
 

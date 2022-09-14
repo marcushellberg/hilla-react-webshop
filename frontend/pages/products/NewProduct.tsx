@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { FormikErrors, useFormik } from 'formik';
 import { Button, FormLayout, TextArea, TextField } from 'react-vaadin-components';
-import Product from 'Frontend/generated/com/example/application/data/entity/Product';
 import { ProductEndpoint } from 'Frontend/generated/endpoints';
 import { EndpointValidationError } from '@hilla/frontend';
+import ProductDTO from "Frontend/generated/com/example/application/data/dto/ProductDTO";
 
-const initialProduct: Product = {
+const initialProduct: ProductDTO = {
   name: '',
   description: ''
 };
@@ -28,10 +28,10 @@ export function NewProduct(): React.ReactElement {
         await ProductEndpoint.saveProduct(values);
       } catch (e: unknown) {
         if (e instanceof EndpointValidationError) {
-          const errors: FormikErrors<Product> = {}
+          const errors: FormikErrors<ProductDTO> = {}
           for (const error of e.validationErrorData) {
             if (typeof error.parameterName === 'string' && error.parameterName in initialProduct) {
-              const key = error.parameterName as (string & keyof Product);
+              const key = error.parameterName as (string & keyof ProductDTO);
               errors[key] = error.message;
             }
           }

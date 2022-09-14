@@ -1,6 +1,6 @@
-package com.example.application.data.endpoint.customers;
+package com.example.application.data.endpoint;
 
-import com.example.application.data.entity.Customer;
+import com.example.application.data.dto.CustomerDTO;
 import com.example.application.repository.CustomerRepository;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import dev.hilla.Endpoint;
@@ -22,14 +22,12 @@ public class CustomersEndpoint {
 
     @Nonnull
     public List<@Nonnull CustomerDTO> getCustomers() {
-        return customerRepository
-                .findAll()
-                .stream()
-                .map(CustomerDTO::new)
+        return customerRepository.findAll().stream()
+                .map(customer -> new CustomerDTO(customer, false))
                 .collect(Collectors.toList());
     }
 
-    public Optional<Customer> findCustomerById(UUID id) {
-        return customerRepository.findById(id);
+    public Optional<CustomerDTO> findCustomerById(UUID id) {
+        return customerRepository.findById(id).map(CustomerDTO::new);
     }
 }

@@ -1,14 +1,26 @@
-package com.example.application.data.entity;
+package com.example.application.data.dto;
 
-import javax.persistence.Entity;
+import com.example.application.data.entity.Pricing;
 
-@Entity
-public class Pricing extends AbstractEntity {
+import javax.validation.constraints.NotBlank;
+
+public class PricingDTO extends AbstractDTO {
+    @NotBlank
     private String name;
 
     private String description;
 
     private String status;
+
+    public PricingDTO() {
+    }
+
+    public PricingDTO(Pricing pricing) {
+        this.setId(pricing.getId());
+        this.description = pricing.getDescription();
+        this.name = pricing.getName();
+        this.status = pricing.getStatus();
+    }
 
     @Override
     public String toString() {

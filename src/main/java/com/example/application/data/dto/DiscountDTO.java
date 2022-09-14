@@ -1,9 +1,11 @@
-package com.example.application.data.entity;
+package com.example.application.data.dto;
 
-import javax.persistence.Entity;
+import com.example.application.data.entity.Discount;
 
-@Entity
-public class Discount extends AbstractEntity {
+import javax.validation.constraints.NotBlank;
+
+public class DiscountDTO extends AbstractDTO {
+    @NotBlank
     private String code;
 
     private String description;
@@ -13,6 +15,18 @@ public class Discount extends AbstractEntity {
     private String status;
 
     private int redemptions;
+
+    public DiscountDTO() {
+    }
+
+    public DiscountDTO(Discount discount) {
+        this.setId(discount.getId());
+        this.amount = discount.getAmount();
+        this.code = discount.getCode();
+        this.status = discount.getStatus();
+        this.redemptions = discount.getRedemptions();
+        this.description = discount.getDescription();
+    }
 
     @Override
     public String toString() {

@@ -4,23 +4,18 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 public class Customer extends AbstractEntity {
-    @NotNull
     private LocalDateTime added;
 
-    @NotBlank
     private String name;
 
-    @NotBlank
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Order> orders;
 
     @Override
