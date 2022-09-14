@@ -32,7 +32,17 @@ public class WebShopEndpoint {
         this.pricingRepository = pricingRepository;
     }
 
+    // CUSTOMERS
+
+    // DISCOUNTS
+
+    // GIFT CARDS
+
+    // ORDERS
+
     public List<Order> getOrders() {
         return orderRepository.findAll();
     }
+
+    // PRICING
 }
