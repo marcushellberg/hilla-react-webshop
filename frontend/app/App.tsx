@@ -1,8 +1,12 @@
-import React from 'react';
-import { AppLayout, DrawerToggle } from 'react-vaadin-components';
-import { NavLink, Outlet } from 'react-router-dom';
+import routes from 'Frontend/app/routes.js';
+import React, { useState } from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import { AppLayout, DrawerToggle, Tab, Tabs } from 'react-vaadin-components';
+import './App.css';
 
 function App() {
+  const [selected, setSelected] = useState(0);
+
   return (
     <AppLayout>
       <header slot="navbar" className="flex gap-m items-center">
@@ -11,7 +15,21 @@ function App() {
       </header>
 
       <nav slot="drawer">
-        <ul className="list-none"></ul>
+        <Tabs
+          orientation="vertical"
+          selected={selected}
+          onSelectedChanged={(e) => {
+            dispatchEvent(new CustomEvent('close-overlay-drawer'));
+            setSelected(e.detail.value);
+          }}
+        >
+          {Object.entries(routes).map(([path, { icon, text }]) => (
+            <Tab className="menu-item" key={path}>
+              {icon}
+              <Link to={path}>{text}</Link>
+            </Tab>
+          ))}
+        </Tabs>
       </nav>
 
       <Outlet />
