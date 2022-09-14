@@ -2,7 +2,7 @@ import { Customers } from 'Frontend/pages/customers/index.js';
 import { GiftCards } from 'Frontend/pages/giftcards/index.js';
 import { Orders } from 'Frontend/pages/orders/index.js';
 import { Pricing } from 'Frontend/pages/pricing/index.js';
-import { Products } from 'Frontend/pages/products/index.js';
+import { NewProduct, Products } from 'Frontend/pages/products/index.js';
 import { Settings } from 'Frontend/pages/settings/index.js';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
@@ -26,6 +26,7 @@ root.render(
           <Route path="orders" element={<Orders />}></Route>
           <Route path="pricing" element={<Pricing />}></Route>
           <Route path="products" element={<Products />}></Route>
+          <Route path="products/new" element={<NewProduct />}></Route>
           <Route path="settings" element={<Settings />}></Route>
         </Route>
       </Routes>
